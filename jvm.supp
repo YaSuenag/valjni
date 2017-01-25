@@ -1,0 +1,84 @@
+{
+   safepoint
+   Memcheck:Cond
+   fun:MarsagliaXORV
+}
+
+{
+  c1-jit
+  Memcheck:Cond
+  fun:_ZN20GlobalValueNumberingC1EP2IR
+}
+
+{
+  anon-addr4-cancel
+  Memcheck:Addr4
+  obj:???
+}
+
+{
+  CHeapObj-leak
+  Memcheck:Leak
+  fun:malloc
+  fun:_ZN2os6mallocEm10MemoryTypeRK15NativeCallStack
+  fun:UnknownInlinedFun
+}
+
+{
+  alloc-leak
+  Memcheck:Leak
+  fun:malloc
+  fun:_ZN2os6mallocEm10MemoryTypeRK15NativeCallStack
+  fun:*AllocateHeap*
+}
+
+{
+  Arena-leak
+  Memcheck:Leak
+  match-leak-kinds: possible
+  fun:malloc
+  fun:_ZN2os6mallocEm10MemoryTypeRK15NativeCallStack
+  fun:_ZN9ChunkPool8allocateEmN17AllocFailStrategy13AllocFailEnumE
+  fun:operator new
+}
+
+{
+  Java-static-call-helper
+  Memcheck:Addr8
+  fun:raw_resolve
+  fun:parameters
+  fun:_ZN9JavaCalls11call_helperEP9JavaValueP12methodHandleP17JavaCallArgumentsP6Thread
+}
+
+{
+  JNI-GetFieldID
+  Memcheck:Addr8
+  fun:jni_GetFieldID
+}
+
+{
+  JNI-NewObject
+  Memcheck:Addr8
+  fun:_ZL12alloc_objectP7_jclassP6Thread
+  fun:jni_NewObject
+}
+
+{
+  pthread_create-leak
+  Memcheck:Leak
+  match-leak-kinds: possible
+  fun:calloc
+  fun:allocate_dtv
+  fun:_dl_allocate_tls
+  fun:allocate_stack
+  fun:pthread_create*
+}
+
+{
+   Java-launcher-malloc
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   fun:JLI_MemAlloc
+}
+
