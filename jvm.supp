@@ -64,6 +64,27 @@
 }
 
 {
+   HandleMark
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   fun:_ZN2os6mallocEm10MemoryTypeRK15NativeCallStack
+   fun:_ZN10HandleMarknwEm
+}
+
+{
+  CMS-should_concurrent_collect
+  Memcheck:Cond
+  fun:_ZNK29ConcurrentMarkSweepGeneration25should_concurrent_collectEv
+}
+
+{
+  CMS-FullGC-Safepoint
+  Memcheck:Cond
+  fun:_ZN16DefNewGeneration18contribute_scratchERP12ScratchBlockP10Generationm
+}
+
+{
   pthread_create-leak
   Memcheck:Leak
   match-leak-kinds: possible
@@ -72,6 +93,12 @@
   fun:_dl_allocate_tls
   fun:allocate_stack
   fun:pthread_create*
+}
+
+{
+  strcmp-SSE42
+  Memcheck:Cond
+  fun:__strncmp_sse42
 }
 
 {
